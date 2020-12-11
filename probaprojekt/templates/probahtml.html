@@ -4,12 +4,18 @@
 	<title>Cím</title>
 </head>
 <body>
+
+<form method="POST"> {% csrf_token %}
+<div>tanuló: <input type="text" name="felhasznalo"></div>
+<div>jelszó: <input type="password" name="jelszo"></div>
+
 <table>
 {% for par in tablazat %}
 	<tr>
 		<td>
 			{% if par.0 == 'nincs' %}
-				<button>Elvállalom</button>
+				<button name="valasztotttetel" value="{{ par.2 }}">Elvállalom</button>
+				<!-- <input type="button" name="{{ par.1 }}" value="Elvállalom">  Ez azért nem tetszik, mert a par.1 kellene legyen a value! -->
 			{% else %}
 				{{ par.0 }}
 			{% endif %}
@@ -18,5 +24,6 @@
 	</tr>
 {% endfor %}
 </table>
+</form>
 </body>
 </html>

@@ -15,6 +15,15 @@ def home_view(request, *args, **kwargs):
 
 	"""
 
+	if request.method=="POST":
+		szurtlista = list(User.objects.filter(nev = request.POST['felhasznalo'], jelszo = request.POST['jelszo']))
+		if  len(szurtlista)>0 : # sikeres a bejelentkezés
+			Kapcsolat.objects.create(userid = szurtlista[0], tetelid = Tetel.objects.get(id=request.POST['valasztotttetel']))
+		else:
+			print("rossz felhasználónév-jelszó páros!")
+
+
+
 	tablazat = []
 	tanulonev = ""
 
@@ -24,7 +33,7 @@ def home_view(request, *args, **kwargs):
 			tanulonev = "nincs"
 		else:
 			tanulonev = szurtkapcsolatok[0].userid.nev
-		tablazat.append([tanulonev, tetel.nev])
+		tablazat.append([tanulonev, tetel.nev, tetel.id])
 
 	# a kontextus legyen két oszlopos mátrix! a második elem a tétel, az első elem, hogy ki választotta a tételt.
 
