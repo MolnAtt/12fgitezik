@@ -4,13 +4,19 @@
 	<title>Cím</title>
 </head>
 <body>
-balblaadf {{ w }}
-
-<ul>
-{% for bigyo in lista %}
-	<li> {{ bigyo }} </li>
+<table>
+{% for par in tablazat %}
+	<tr>
+		<td>
+			{% if par.0 == 'nincs' %}
+				<button>Elvállalom</button>
+			{% else %}
+				{{ par.0 }}
+			{% endif %}
+		</td>
+		<td>{{ par.1 }}</td>
+	</tr>
 {% endfor %}
-</ul>
-
+</table>
 </body>
 </html>

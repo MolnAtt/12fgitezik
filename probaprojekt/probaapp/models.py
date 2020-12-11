@@ -19,3 +19,5 @@ class Kapcsolat(models.Model):
 	tetelid = models.ForeignKey(Tetel, on_delete=models.CASCADE)
 	def __str__(self):
 		return f"{self.userid.nev} ({self.userid.id}) --> {self.tetelid.nev}"
+
+		
