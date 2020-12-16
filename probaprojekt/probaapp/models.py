@@ -5,6 +5,14 @@ from django.db import models
 class User(models.Model):
 	nev = models.CharField(max_length=100)
 	jelszo = models.CharField(max_length=100)
+
+	def azonositas(felhasznalonev, jelszo): # class method
+
+		pass
+		#....
+
+		return ("tanulo", True)
+
 	def __str__(self):
 		return self.nev + "(" + str(self.id) +")"
 
